@@ -78,13 +78,15 @@ int get_gpu_temp()
 // Function to truncate the GPU Temperature
 int truncate_gpu_temp(double temp)
 {
-    return (double) temp / 1000;
+    double temp_c = (double) temp / 1000;
+    return temp_c;
 }
 
 // Function to truncate the GPU Frequency
 int truncate_gpu_freq(double freq)
 {
-    return (double) freq / 1000000;
+    double freq_mhz = (double) freq / 1000000;
+    return freq_mhz;
 }
 
 
@@ -96,8 +98,8 @@ char *get_gpu_stats()
     int temp = get_gpu_temp();
 
     // Truncate the values
-    freq = truncate_gpu_freq(freq);
-    temp = truncate_gpu_temp(temp);
+    double freq_mhz = truncate_gpu_freq(freq);
+    double temp_c = truncate_gpu_temp(temp);
 
     // Allocate memory for the string   
     char *stats = malloc(MAX_SIZE * sizeof(char));
@@ -110,9 +112,8 @@ char *get_gpu_stats()
         return NULL;
     }
 
-
     // Format the string and return it
-    sprintf(stats, "GPU Freq: %.1f MHZ GPU Temp: %.1f C\n", freq, temp);
+    sprintf(stats, "GPU Freq: %.1f MHZ GPU Temp: %.1f C\n", freq_mhz, temp_c);
     return stats;
 }
 
