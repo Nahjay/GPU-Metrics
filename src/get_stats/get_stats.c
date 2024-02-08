@@ -33,8 +33,6 @@ int get_gpu_freq()
     if (line)
         free(line);
 
-    printf("GPU Frequency: %d\n", freq);
-
     return freq;
 }
 
@@ -62,8 +60,6 @@ int get_gpu_temp()
     fclose(fp);
     if (line)
         free(line);
-
-    printf("GPU Temperature: %d\n", temp);
 
     return temp;
 }
