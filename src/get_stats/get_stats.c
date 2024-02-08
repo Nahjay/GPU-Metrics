@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include "get_stats.h"
 
 
 // Function to extract the frequency value of the GPU from the sysfs file
@@ -37,8 +38,39 @@ int get_gpu_freq()
     return freq;
 }
 
+// Function to extract the temperature value of the GPU from the sysfs file
+int get_gpu_temp()
+{
+    FILE *fp;
+    char *line = NULL;
+    size_t len = 0;
+    ssize_t read;
+    int temp = 0;
+
+    fp = fopen("/sys/class/thermal/thermal_zone2/temp", "r");
+    if (fp == NULL)
+    {
+        printf("Error: Unable to open the file\n");
+        return -1;
+    }
+
+    while ((read = getline(&line, &len, fp)) != -1)
+    {
+        temp = atoi(line);
+    }
+
+    fclose(fp);
+    if (line)
+        free(line);
+
+    printf("GPU Temperature: %d\n", temp);
+
+    return temp;
+}
+
 int main (void)
 {
     get_gpu_freq();
+    get_gpu_temp();
     return 0;
 }
