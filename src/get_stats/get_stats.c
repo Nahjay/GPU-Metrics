@@ -96,8 +96,8 @@ char *get_gpu_stats()
     int temp = get_gpu_temp();
 
     // Truncate the values
-    double freq = truncate_gpu_freq(freq);
-    double temp = truncate_gpu_temp(temp);
+    freq = truncate_gpu_freq(freq);
+    temp = truncate_gpu_temp(temp);
 
     // Allocate memory for the string   
     char *stats = malloc(MAX_SIZE * sizeof(char));
