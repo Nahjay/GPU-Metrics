@@ -78,13 +78,13 @@ int get_gpu_temp()
 // Function to truncate the GPU Temperature
 int truncate_gpu_temp(int temp)
 {
-    return temp / 1000;
+    return (double) temp / 1000;
 }
 
 // Function to truncate the GPU Frequency
 int truncate_gpu_freq(int freq)
 {
-    return freq / 1000000;
+    return (double) freq / 1000000;
 }
 
 
