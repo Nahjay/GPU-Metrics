@@ -36,3 +36,9 @@ int get_gpu_freq()
 
     return freq;
 }
+
+int main (void)
+{
+    get_gpu_freq();
+    return 0;
+}
