@@ -4,5 +4,7 @@
 int get_gpu_freq();
 int get_gpu_temp();
 char* get_gpu_stats();
+int truncate_gpu_freq(int freq);
+int truncate_gpu_temp(int temp);
 
 #endif
