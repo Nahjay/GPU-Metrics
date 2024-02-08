@@ -68,9 +68,21 @@ int get_gpu_temp()
     return temp;
 }
 
+// Function to format the output of the GPU frequency and temperature into a string
+char *get_gpu_stats()
+{
+    int freq = get_gpu_freq();
+    int temp = get_gpu_temp();
+    char *stats = malloc(100 * sizeof(char));
+    sprintf(stats, "GPU Frequency: %d\nGPU Temperature: %d\n", freq, temp);
+    return stats;
+}
+
+
 int main (void)
 {
     get_gpu_freq();
     get_gpu_temp();
+    printf("%s", get_gpu_stats());
     return 0;
 }
