@@ -112,7 +112,7 @@ char *get_gpu_stats()
 
 
     // Format the string and return it
-    sprintf(stats, "GPU Frequency: %.1f GPU Temperature: %.1f ", freq, temp);
+    sprintf(stats, "GPU Freq: %.1f MHZ GPU Temp: %.1f C\n", freq, temp);
     return stats;
 }
 
