@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include "get_stats.h"
 
+#define MAX_SIZE 1024
 
 // Function to extract the frequency value of the GPU from the sysfs file
 int get_gpu_freq()
@@ -84,7 +85,16 @@ char *get_gpu_stats()
     int temp = get_gpu_temp();
     freq = truncate_gpu_freq(freq);
     temp = truncate_gpu_temp(temp);
-    char *stats = malloc(100 * sizeof(char));
+    char *stats = malloc(MAX_SIZE * sizeof(char));
+
+    // Check if memeory allocation was successful
+    if (stats == NULL)
+    {
+        printf("Error: Unable to allocate memory\n");
+        free(stats);
+        return NULL;
+    }
+
     sprintf(stats, "GPU Frequency: %.1f GPU Temperature: %.1f ", freq, temp);
     return stats;
 }
