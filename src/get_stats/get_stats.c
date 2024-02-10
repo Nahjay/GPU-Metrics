@@ -1,11 +1,22 @@
 
 // Read the sysfs files and return the values
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
+// #include <unistd.h>
 #include "get_stats.h"
+#include <linux/module.h>
+#include <linux/kernel.h>
+#include <linux/init.h>
+#include <linux/fs.h>
+#include <linux/uaccess.h>
+
+// Changing approach to be a kernel module
+
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Nahjay Battieste");
+MODULE_DESCRIPTION("Get GPU Frequency and Temperature");
 
 #define MAX_SIZE 1024
 
