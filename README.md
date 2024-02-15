@@ -1,1 +1,1 @@
-# LCD-GPU-Metrics
+GPU-Metrics
